@@ -128,6 +128,10 @@ export default {
     postrender: {
       type: Function,
       default: (htmlData) => { return htmlData }
+    },
+    plugins: {
+      type: Array,
+      default: []
     }
   },
 
@@ -151,6 +155,12 @@ export default {
 
     if (this.emoji) {
       this.md.use(emoji)
+    }
+
+    if (this.plugins.length > 0) {
+      for (const plugin of this.plugins) {
+        this.md.use(plugin)
+      }
     }
 
     this.md.set({

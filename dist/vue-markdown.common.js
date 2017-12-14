@@ -6,13 +6,13 @@
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("babel-runtime/core-js/get-iterator"), require("babel-runtime/core-js/object/keys"), require("markdown-it"), require("markdown-it-emoji"), require("markdown-it-sub"), require("markdown-it-sup"), require("markdown-it-footnote"), require("markdown-it-deflist"), require("markdown-it-abbr"), require("markdown-it-ins"), require("markdown-it-mark"), require("markdown-it-toc-and-anchor"), require("markdown-it-katex"), require("markdown-it-task-lists"));
+		module.exports = factory(require("babel-runtime/core-js/object/keys"), require("babel-runtime/core-js/get-iterator"), require("markdown-it"), require("markdown-it-emoji"), require("markdown-it-sub"), require("markdown-it-sup"), require("markdown-it-footnote"), require("markdown-it-deflist"), require("markdown-it-abbr"), require("markdown-it-ins"), require("markdown-it-mark"), require("markdown-it-toc-and-anchor"), require("markdown-it-katex"), require("markdown-it-task-lists"));
 	else if(typeof define === 'function' && define.amd)
-		define(["babel-runtime/core-js/get-iterator", "babel-runtime/core-js/object/keys", "markdown-it", "markdown-it-emoji", "markdown-it-sub", "markdown-it-sup", "markdown-it-footnote", "markdown-it-deflist", "markdown-it-abbr", "markdown-it-ins", "markdown-it-mark", "markdown-it-toc-and-anchor", "markdown-it-katex", "markdown-it-task-lists"], factory);
+		define(["babel-runtime/core-js/object/keys", "babel-runtime/core-js/get-iterator", "markdown-it", "markdown-it-emoji", "markdown-it-sub", "markdown-it-sup", "markdown-it-footnote", "markdown-it-deflist", "markdown-it-abbr", "markdown-it-ins", "markdown-it-mark", "markdown-it-toc-and-anchor", "markdown-it-katex", "markdown-it-task-lists"], factory);
 	else if(typeof exports === 'object')
-		exports["VueMarkdown"] = factory(require("babel-runtime/core-js/get-iterator"), require("babel-runtime/core-js/object/keys"), require("markdown-it"), require("markdown-it-emoji"), require("markdown-it-sub"), require("markdown-it-sup"), require("markdown-it-footnote"), require("markdown-it-deflist"), require("markdown-it-abbr"), require("markdown-it-ins"), require("markdown-it-mark"), require("markdown-it-toc-and-anchor"), require("markdown-it-katex"), require("markdown-it-task-lists"));
+		exports["VueMarkdown"] = factory(require("babel-runtime/core-js/object/keys"), require("babel-runtime/core-js/get-iterator"), require("markdown-it"), require("markdown-it-emoji"), require("markdown-it-sub"), require("markdown-it-sup"), require("markdown-it-footnote"), require("markdown-it-deflist"), require("markdown-it-abbr"), require("markdown-it-ins"), require("markdown-it-mark"), require("markdown-it-toc-and-anchor"), require("markdown-it-katex"), require("markdown-it-task-lists"));
 	else
-		root["VueMarkdown"] = factory(root["babel-runtime/core-js/get-iterator"], root["babel-runtime/core-js/object/keys"], root["markdown-it"], root["markdown-it-emoji"], root["markdown-it-sub"], root["markdown-it-sup"], root["markdown-it-footnote"], root["markdown-it-deflist"], root["markdown-it-abbr"], root["markdown-it-ins"], root["markdown-it-mark"], root["markdown-it-toc-and-anchor"], root["markdown-it-katex"], root["markdown-it-task-lists"]);
+		root["VueMarkdown"] = factory(root["babel-runtime/core-js/object/keys"], root["babel-runtime/core-js/get-iterator"], root["markdown-it"], root["markdown-it-emoji"], root["markdown-it-sub"], root["markdown-it-sup"], root["markdown-it-footnote"], root["markdown-it-deflist"], root["markdown-it-abbr"], root["markdown-it-ins"], root["markdown-it-mark"], root["markdown-it-toc-and-anchor"], root["markdown-it-katex"], root["markdown-it-task-lists"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_9__, __WEBPACK_EXTERNAL_MODULE_10__, __WEBPACK_EXTERNAL_MODULE_11__, __WEBPACK_EXTERNAL_MODULE_12__, __WEBPACK_EXTERNAL_MODULE_13__, __WEBPACK_EXTERNAL_MODULE_14__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -66,13 +66,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _getIterator2 = __webpack_require__(1);
-
-	var _getIterator3 = _interopRequireDefault(_getIterator2);
-
-	var _keys = __webpack_require__(2);
+	var _keys = __webpack_require__(1);
 
 	var _keys2 = _interopRequireDefault(_keys);
+
+	var _getIterator2 = __webpack_require__(2);
+
+	var _getIterator3 = _interopRequireDefault(_getIterator2);
 
 	var _markdownIt = __webpack_require__(3);
 
@@ -250,6 +250,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      default: function _default(htmlData) {
 	        return htmlData;
 	      }
+	    },
+	    plugins: {
+	      type: Array,
+	      default: []
 	    }
 	  },
 
@@ -266,6 +270,33 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (this.emoji) {
 	      this.md.use(_markdownItEmoji2.default);
+	    }
+
+	    if (this.plugins.length > 0) {
+	      var _iteratorNormalCompletion = true;
+	      var _didIteratorError = false;
+	      var _iteratorError = undefined;
+
+	      try {
+	        for (var _iterator = (0, _getIterator3.default)(this.plugins), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	          var plugin = _step.value;
+
+	          this.md.use(plugin);
+	        }
+	      } catch (err) {
+	        _didIteratorError = true;
+	        _iteratorError = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion && _iterator.return) {
+	            _iterator.return();
+	          }
+	        } finally {
+	          if (_didIteratorError) {
+	            throw _iteratorError;
+	          }
+	        }
+	      }
 	    }
 
 	    this.md.set({
@@ -333,27 +364,27 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (this.$slots.default) {
 	      this.sourceData = '';
-	      var _iteratorNormalCompletion = true;
-	      var _didIteratorError = false;
-	      var _iteratorError = undefined;
+	      var _iteratorNormalCompletion2 = true;
+	      var _didIteratorError2 = false;
+	      var _iteratorError2 = undefined;
 
 	      try {
-	        for (var _iterator = (0, _getIterator3.default)(this.$slots.default), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	          var slot = _step.value;
+	        for (var _iterator2 = (0, _getIterator3.default)(this.$slots.default), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	          var slot = _step2.value;
 
 	          this.sourceData += slot.text;
 	        }
 	      } catch (err) {
-	        _didIteratorError = true;
-	        _iteratorError = err;
+	        _didIteratorError2 = true;
+	        _iteratorError2 = err;
 	      } finally {
 	        try {
-	          if (!_iteratorNormalCompletion && _iterator.return) {
-	            _iterator.return();
+	          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	            _iterator2.return();
 	          }
 	        } finally {
-	          if (_didIteratorError) {
-	            throw _iteratorError;
+	          if (_didIteratorError2) {
+	            throw _iteratorError2;
 	          }
 	        }
 	      }
