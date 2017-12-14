@@ -132,6 +132,10 @@ export default {
     plugins: {
       type: Array,
       default: []
+    },
+    override: {
+      type: Function,
+      default: (md) => {}
     }
   },
 
@@ -211,6 +215,8 @@ export default {
         },
       })
     }
+
+    this.override(this.md)
 
     let outHtml = this.show ?
       this.md.render(

@@ -254,6 +254,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    plugins: {
 	      type: Array,
 	      default: []
+	    },
+	    override: {
+	      type: Function,
+	      default: function _default(md) {}
 	    }
 	  },
 
@@ -348,6 +352,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      });
 	    }
+
+	    this.override(this.md);
 
 	    var outHtml = this.show ? this.md.render(this.prerender(this.sourceData)) : '';
 	    outHtml = this.postrender(outHtml);
